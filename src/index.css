@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-slate-100 text-slate-800 antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Print Styles for Perfect PDF Export with Clickable Links */
+@media print {
+  html, body {
+    background: white !important;
+    color: black !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    width: 100% !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 0mm;
+  }
+
+  /* Hide app header, controls, editor form, buttons when printing */
+  .no-print,
+  nav,
+  aside,
+  header,
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  /* Make the resume container take the full print area */
+  .resume-sheet {
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 24px !important;
+    width: 210mm !important;
+    min-height: 297mm !important;
+    page-break-after: always;
+    border: none !important;
+    transform: none !important;
+  }
+
+  /* Ensure all links look clean and maintain their href target */
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+
+  /* Keep background graphics and colors */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* Page dimension helpers */
+.a4-container {
+  width: 210mm;
+  min-height: 297mm;
+}
